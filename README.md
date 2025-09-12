@@ -2,6 +2,11 @@
 
 Data to be used in the Observatory are in the `data` directory.
 
+The `data_csv` directory includes some preprocessed data that is further
+processed by the included scrips to create the data in the `data` directory.
+**Don't use the files in the data_csv directory.**
+There is a list for the coding of these files at the end of this README.
+
 ## Greek Tourism Industry
 
 ### Ακαθάριστο Εγχώριο προϊόν (ΑΕΠ) για τον κλάδο GHI ως προς το σύνολο του ΑΕΠ ανά NUTS 2
@@ -86,4 +91,15 @@ Data to be used in the Observatory are in the `data` directory.
 
 * Dataset: `data/precarious_NEET.csv`
 
+# Data coding
 
+This is a list for the coding used for files in the `data_csv` directory. The
+rest of the data are from Eurostat.
+
+* SS21: επίπεδο δεξιοτήτων (πηγή: Reslab)
+* SS23: Κύκλος εργασιών επιχειρήσεων φιλοξενίας και εστίασης ανά περιφερειακή ενότητα (πηγή: ΕΛΣΤΑΤ)
+* SS24: ΑΕΠΚ σε κλαδους GHI ανά περιφέρεια (2000-2022) (πηγή: ΕΛΣΤΑΤ)
+* SS25: Ακαθαριστη Προστιθεμενη Αξία σε κλάδους GHI ανά περιφέρεια (2000-2022) (πηγή: ΕΛΣΤΑΤ)
+* SS27: Αφίξεις σε καταλύματα ξενοδοχειακα, ενοικιαζομενα, καμπινγκ (πίνακας 03 κάθε χρονιά) (πηγή: ΕΛΣΤΑΤ)
+* SS28: Διανυκτερεύσεις (και αριθμός και κλίνες)σε καταλύματα ξενοδοχειακα, ενοικιαζομενα, καμπινγκ (πίνακας 04 κάθε χρονιά) (πηγή: ΕΛΣΤΑΤ)
+* SS33: Average expediture per journey, Average expediture per overnight stay, Average duration of stay by NUTS 2 (πηγή: INSETE)
