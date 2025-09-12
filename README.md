@@ -2,6 +2,8 @@
 
 Data to be used in the Observatory are in the `data` directory.
 
+## Greek Tourism Industry
+
 ### Ακαθάριστο Εγχώριο προϊόν (ΑΕΠ) για τον κλάδο GHI ως προς το σύνολο του ΑΕΠ ανά NUTS 2
 
 * Dataset: `data/greek_tourism_GDP.csv`
@@ -38,6 +40,8 @@ Data to be used in the Observatory are in the `data` directory.
 
 * Dataset: `data/greek_tourism_Stays.csv`
 
+## EU Labour Markets
+
 ### Συνολική απασχόληση (total employment)
 
 * Dataset: `data/EULaborMarket-TotalEmployment.csv`
@@ -58,6 +62,8 @@ Data to be used in the Observatory are in the `data` directory.
 ### Ανεργία (Unemployment)
 
 * Dataset: `data/EU_labor_market_unemployment.csv`
+
+## Precarious Labour in the EU
 
 ### Mερική μισθωτή απασχόληση (part-time waged employment)
 
