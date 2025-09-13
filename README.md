@@ -67,6 +67,7 @@ There is a list for the coding of these files at the end of this README.
 ### Ανεργία (Unemployment)
 
 * Dataset: `data/EU_labor_market_unemployment.csv`
+* Σχόλια: Unemployment rates by NUTS2.
 
 ## Precarious Labour in the EU
 
