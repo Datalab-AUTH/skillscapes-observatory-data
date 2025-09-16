@@ -16,6 +16,22 @@ d_Thessaly <- read_csv('data_csv/SS33-Thessaly.csv')
 d_Western_Greece <- read_csv('data_csv/SS33-Western_Greece.csv')
 d_Western_Macedonia <- read_csv('data_csv/SS33-Western_Macedonia.csv')
 
+nuts2_dict <- c(
+  "Attica" = "EL30",
+  "Central Greece" = "EL64",
+  "Central Macedonia" = "EL52",
+  "Crete" = "EL43",
+  "Eastern Macedonia & Thrace" = "EL51",
+  "Epirus" = "EL54",
+  "Ionian Islands" = "EL62",
+  "North Aegean" = "EL41",
+  "Peloponnese" = "EL65",
+  "South Aegean" = "EL42",
+  "Thessaly" = "EL61",
+  "Western Greece" = "EL63",
+  "Western Macedonia" = "EL53"
+)
+
 d <- bind_rows(
   d_Attica,
   d_Central_Greece,
