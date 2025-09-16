@@ -61,5 +61,11 @@ d <- bind_rows(
   ungroup() |>
   relocate(Year, .before=everything()) |>
   relocate(Region, .before=everything()) |>
-  select(-ends_with("_prev"))
+  select(-ends_with("_prev")) |>
+  mutate(geo = recode(Region, !!!nuts2_dict)) |>
+  relocate(geo, .before=everything()) |>
+  rename("NUTS_label" = "Region") |>
+  mutate(NUTS_level = 2) |>
+  relocate(NUTS_level, .after=NUTS_label)
+  
 write_csv(d, "data/greek_tourism_AvgExpenditureDuration.csv")
