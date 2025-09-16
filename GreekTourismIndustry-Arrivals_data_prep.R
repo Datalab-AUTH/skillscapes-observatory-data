@@ -262,7 +262,7 @@ d_ss27_NUTS2 <- d_ss27 |>
   mutate(NUTS_label_norm = recode(NUTS_name, !!!nuts2_map)) |>
   mutate(geo = recode(NUTS_label_norm, !!!nuts2_dict))
   
-  d_ss27_NUTS3 <- d_ss27 |>
+d_ss27_NUTS3 <- d_ss27 |>
   filter(NUTS3 != "ΣΥΝΟΛΟ") |>
   select(-NUTS2) |>
   arrange(NUTS3, Year) |>
@@ -280,12 +280,19 @@ d_ss27_NUTS2 <- d_ss27 |>
   ungroup() |>
   select(-ends_with("_prev")) |>
   rename("NUTS_name" = "NUTS3") |>
-  mutate(NUTS_level = 3)
+  mutate(NUTS_level = 3) |>
+  mutate(NUTS_name = normalize_NUTS_labels(NUTS_name)) |>
+  mutate(NUTS_label_norm = recode(NUTS_name, !!!nuts3_map)) |>
+  mutate(geo = recode(NUTS_label_norm, !!!nuts3_dict))
 
 d <- rbind(d_ss27_NUTS2, d_ss27_NUTS3) |>
   rename("year" = "Year") |>
   relocate(NUTS_name, .before=everything()) |>
   relocate(NUTS_level, .after=NUTS_name) |>
-  relocate(year, .after=NUTS_level)
+  relocate(year, .after=NUTS_level) |>
+  select(-NUTS_name) |>
+  rename("NUTS_label" = "NUTS_label_norm") |>
+  relocate(NUTS_label, .before=everything()) |>
+  relocate(geo, .before=everything())
 
 write_csv(d, "data/greek_tourism_Arrivals.csv")
