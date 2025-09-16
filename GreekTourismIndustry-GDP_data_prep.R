@@ -1,5 +1,7 @@
 #!/usr/bin/R
 
+library(eurostat)
+
 d <- get_eurostat('nama_10r_2gvagr',
                   filters = list(
                     na_item = "B1GQ"
@@ -12,6 +14,14 @@ d <- get_eurostat('nama_10r_2gvagr',
   rename(
     "GDP" = "I15",
     "GDP_pct_diff" = "PCH_PRE"
+    ) |>
+  mutate(
+    NUTS_level = case_when(
+      str_length(geo) == 2 ~ 0,
+      str_length(geo) == 3 ~ 1,
+      str_length(geo) == 4 ~ 2
     )
+  ) |>
+  relocate(NUTS_level, .after=geo)
 write_csv(d, "data/greek_tourism_GDP.csv")
 
