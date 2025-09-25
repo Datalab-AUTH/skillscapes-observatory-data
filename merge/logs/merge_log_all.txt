@@ -1,0 +1,21 @@
+Loaded: EU_labor_market_occupations_per_skill_level.csv (enc=utf-8-sig) | rows=82646 | geos=495, years=14 | orig_cols=['Country_code', 'NUTS_name', 'year', 'age', 'skill_level', 'persons_per_skill_level', 'geo', 'NUTS_level']
+Loaded: EU_labor_market_unemployment.csv (enc=utf-8-sig) | rows=2928 | geos=244, years=12 | orig_cols=['geo', 'year', 'unemployment_pct', 'geo_label', 'NUTS_level', 'Country_code', 'unemployment_diff']
+Loaded: EU_labor_market_workforce_education.csv (enc=utf-8-sig) | rows=18819 | geos=369, years=17 | orig_cols=['geo', 'geo_label', 'NUTS_level', 'Country_code', 'year', 'education_level', 'education_level_pct', 'education_level_pct_diff']
+Loaded: EULaborMarket-SectoralEmployment.csv (enc=utf-8-sig) | rows=350336 | geos=1564, years=16 | orig_cols=['nace_r2', 'geo', 'geo_label', 'NUTS_level', 'Country_code', 'year', 'sector_employment', 'total_employment', 'sector_employment_pct', 'sector_employment_pct_diff']
+Loaded: EULaborMarket-TotalEmployment.csv (enc=utf-8-sig) | rows=6290 | geos=370, years=17 | orig_cols=['geo', 'geo_label', 'NUTS_level', 'Country_code', 'year', 'total_employment', 'total_employment_pct_diff', 'population', 'employed_pct']
+Loaded: greek_tourism_Arrivals.csv (enc=utf-8-sig) | rows=783 | geos=66, years=9 | orig_cols=['geo', 'NUTS_label', 'NUTS_level', 'year', 'Hotel_Arrivals_Natives', 'Hotel_Arrivals_Foreign', 'Hotel_Arrivals_Total', 'Hotel_Beds', 'Hotel_Arrivals_Natives_pct_diff', 'Hotel_Arrivals_Foreign_pct_diff', 'Hotel_Arrivals_Total_pct_diff', 'Hotel_Beds_pct_diff']
+Loaded: greek_tourism_AvgExpenditureDuration.csv (enc=utf-8-sig) | rows=117 | geos=13, years=9 | orig_cols=['geo', 'NUTS_label', 'NUTS_level', 'Year', 'Avg_expenditure_per_journey', 'Avg_expenditure_per_stay', 'Avg_duration_of_stay', 'Avg_expenditure_per_journey_pct_diff', 'Avg_expenditure_per_stay_pct_diff', 'Avg_duration_of_stay_pct_diff']
+Loaded: greek_tourism_GDP.csv (enc=utf-8-sig) | rows=7168 | geos=448, years=16 | orig_cols=['geo', 'NUTS_level', 'year', 'GDP', 'GDP_pct_diff']
+Loaded: greek_tourism_GFCF.csv (enc=utf-8-sig) | rows=391 | geos=17, years=23 | orig_cols=['geo', 'NUTS_label', 'NUTS_label_el', 'NUTS_level', 'year', 'GFCF_GHI', 'GFCF_Total', 'GFCF_pct', 'GFCF_pct_diff']
+Loaded: greek_tourism_GVA.csv (enc=utf-8-sig) | rows=1702 | geos=69, years=23 | orig_cols=['geo', 'NUTS_label', 'NUTS_level', 'year', 'GVA_GHI', 'GVA_total', 'GVA_GHI_pct', 'GVA_GHI_pct_diff']
+Loaded: greek_tourism_Stays.csv (enc=utf-8-sig) | rows=869 | geos=66, years=10 | orig_cols=['geo', 'NUTS_label', 'year', 'NUTS_level', 'Hotel_Stays_Natives', 'Hotel_Stays_Foreign', 'Hotel_Stays_Total', 'Hotel_Beds', 'Hotel_Occupancy', 'Hotel_Stays_Natives_pct_diff', 'Hotel_Stays_Foreign_pct_diff', 'Hotel_Stays_Total_pct_diff', 'Hotel_Occupancy_pct_diff']
+Loaded: greek_tourism_Turnover.csv (enc=utf-8-sig) | rows=504 | geos=62, years=6 | orig_cols=['NUTS_label', 'NUTS_level', 'geo', 'year', 'Turnover_Catering', 'Turnover_Accomodation', 'Turnover_Catering_pct_diff', 'Turnover_Accomodation_pct_diff']
+Loaded: precarious_involuntary_part_time_employment.csv (enc=utf-8-sig) | rows=1428 | geos=34, years=42 | orig_cols=['geo', 'year', 'involuntary_part_time_employment', 'geo_label', 'NUTS_level', 'Country_code', 'involuntary_part_time_employment_diff']
+Loaded: precarious_NEET.csv (enc=utf-8-sig) | rows=8609 | geos=369, years=25 | orig_cols=['geo', 'year', 'unemployment_rate', 'geo_label', 'NUTS_level', 'Country_code', 'unemployment_rate_pct_diff']
+Loaded: precarious_part_time_employment.csv (enc=utf-8-sig) | rows=9620 | geos=370, years=26 | orig_cols=['geo', 'year', 'part_time_employment', 'population', 'geo_label', 'NUTS_level', 'Country_code', 'part_time_employment_pct', 'part_time_employment_diff']
+Loaded: precarious_temporary_part_time_employment.csv (enc=utf-8-sig) | rows=1020 | geos=34, years=30 | orig_cols=['geo', 'year', 'temporary_employment', 'geo_label', 'NUTS_level', 'Country_code', 'temporary_employment_diff']
+
+STACKED shape: (492869, 70) -> merged_by_geo_all_stacked.csv
+Exact duplicates removed: 0
+Duplicates removed ignoring only 'source': 361
+DQ report: DATA_QUALITY_REPORT.md

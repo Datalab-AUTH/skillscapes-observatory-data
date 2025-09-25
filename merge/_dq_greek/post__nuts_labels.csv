@@ -1,0 +1,259 @@
+﻿geo,nuts_level,nuts_label
+EL3,1,ATTIKI
+EL3,1,Αττική
+EL30,2,Attica
+EL30,2,Attiki
+EL30,2,ΑΤΤΙΚΗΣ
+EL30,2,Αττική
+EL30,3,ΑΤΤΙΚΗΣ
+EL301,3,Voreios Tomeas Athinon
+EL301,3,Βόρειος Τομέας Αθηνών
+EL302,3,Dytikos Tomeas Athinon
+EL302,3,Δυτικός Τομέας Αθηνών
+EL303,3,Kentrikos Tomeas Athinon
+EL303,3,Κεντρικός Τομέας Αθηνών
+EL304,3,Notios Tomeas Athinon
+EL304,3,Νότιος Τομέας Αθηνών
+EL305,3,Anatoliki Attiki
+EL305,3,Ανατολική Αττική
+EL306,3,Dytiki Attiki
+EL306,3,Δυτική Αττική
+EL307,3,"Peiraias, Nisoi"
+EL307,3,Νήσοι
+EL307,3,Πειραιάς
+EL4,1,"NISIA AIGAIOU, KRITI"
+EL4,1,"Νησιά Αιγαίου, Κρήτη"
+EL41,2,North Aegean
+EL41,2,Voreio Aigaio
+EL41,2,ΒΟΡΕΙΟΥ ΑΙΓΑΙΟΥ
+EL41,2,Βόρειο Αιγαίο
+EL411,3,"Lesvos, Limnos"
+EL411,3,ΛΕΣΒΟΥ
+EL411,3,ΛΗΜΝΟΥ
+EL411,3,Λέσβος
+EL411,3,Λήμνος
+EL412,3,"Ikaria, Samos"
+EL412,3,ΙΚΑΡΙΑΣ
+EL412,3,Ικαρία
+EL412,3,ΣΑΜΟΥ
+EL412,3,Σάμος
+EL413,3,Chios
+EL413,3,ΧΙΟΥ
+EL413,3,Χίος
+EL42,2,Notio Aigaio
+EL42,2,South Aegean
+EL42,2,ΝΟΤΙΟΥ ΑΙΓΑΙΟΥ
+EL42,2,Νότιο Αιγαίο
+EL421,3,"Kalymnos, Karpathos, Kos, Rodos"
+EL421,3,ΚΑΛΥΜΝΟΥ
+EL421,3,ΚΑΡΠΑΘΟΥ
+EL421,3,ΚΩ
+EL421,3,Κάλυμνος
+EL421,3,Κάρπαθος – Ηρωική Νήσος Κάσος
+EL421,3,Κως
+EL421,3,ΡΟΔΟΥ
+EL421,3,Ρόδος
+EL422,3,"Andros, Thira, Kea, Milos, Mykonos, Naxos, Paros, Syros, Tinos"
+EL422,3,Άνδρος
+EL422,3,ΑΝΔΡΟΥ
+EL422,3,ΘΗΡΑΣ
+EL422,3,Θήρα
+EL422,3,ΚΕΑΣ - ΚΥΘΝΟΥ
+EL422,3,ΜΗΛΟΥ
+EL422,3,ΜΥΚΟΝΟΥ
+EL422,3,Μήλος
+EL422,3,Μύκονος
+EL422,3,ΝΑΞΟΥ
+EL422,3,Νάξος
+EL422,3,ΠΑΡΟΥ
+EL422,3,Πάρος
+EL422,3,ΣΥΡΟΥ
+EL422,3,Σύρος
+EL422,3,ΤΗΝΟΥ
+EL422,3,Τήνος
+EL43,2,Crete
+EL43,2,Kriti
+EL43,2,ΚΡΗΤΗΣ
+EL43,2,Κρήτη
+EL431,3,Irakleio
+EL431,3,ΗΡΑΚΛΕΙΟΥ
+EL431,3,Ηράκλειο
+EL432,3,Lasithi
+EL432,3,ΛΑΣΙΘΙΟΥ
+EL432,3,Λασίθι
+EL433,3,Rethymni
+EL433,3,ΡΕΘΥΜΝΟΥ
+EL433,3,Ρέθυμνο
+EL434,3,Chania
+EL434,3,ΧΑΝΙΩΝ
+EL434,3,Χανιά
+EL5,1,VOREIA ELLADA
+EL5,1,Βόρεια Ελλάδα
+EL51,2,"Anatoliki Makedonia, Thraki"
+EL51,2,Eastern Macedonia & Thrace
+EL51,2,ΑΝΑΤΟΛΙΚΗΣ ΜΑΚΕΔΟΝΙΑΣ ΚΑΙ ΘΡΑΚΗΣ
+EL51,2,"Ανατολική Μακεδονία, Θράκη"
+EL511,3,Evros
+EL511,3,Έβρος
+EL511,3,ΕΒΡΟΥ
+EL512,3,Xanthi
+EL512,3,ΞΑΝΘΗΣ
+EL512,3,Ξάνθη
+EL513,3,Rodopi
+EL513,3,ΡΟΔΟΠΗΣ
+EL513,3,Ροδόπη
+EL514,3,Drama
+EL514,3,ΔΡΑΜΑΣ
+EL514,3,Δράμα
+EL515,3,"Thasos, Kavala"
+EL515,3,ΘΑΣΟΥ
+EL515,3,Θάσος
+EL515,3,ΚΑΒΑΛΑΣ
+EL515,3,Καβάλα
+EL52,2,Central Macedonia
+EL52,2,Kentriki Makedonia
+EL52,2,ΚΕΝΤΡΙΚΗΣ ΜΑΚΕΔΟΝΙΑΣ
+EL52,2,Κεντρική Μακεδονία
+EL521,3,Imathia
+EL521,3,ΗΜΑΘΙΑΣ
+EL521,3,Ημαθία
+EL522,3,Thessaloniki
+EL522,3,ΘΕΣΣΑΛΟΝΙΚΗΣ
+EL522,3,Θεσσαλονίκη
+EL523,3,Kilkis
+EL523,3,ΚΙΛΚΙΣ
+EL523,3,Κιλκίς
+EL524,3,Pella
+EL524,3,ΠΕΛΛΑΣ
+EL524,3,Πέλλα
+EL525,3,Pieria
+EL525,3,ΠΙΕΡΙΑΣ
+EL525,3,Πιερία
+EL526,3,Serres
+EL526,3,ΣΕΡΡΩΝ
+EL526,3,Σέρρες
+EL527,3,Chalkidiki
+EL527,3,ΧΑΛΚΙΔΙΚΗΣ
+EL527,3,Χαλκιδική
+EL53,2,Dytiki Makedonia
+EL53,2,Western Macedonia
+EL53,2,ΔΥΤΙΚΗΣ ΜΑΚΕΔΟΝΙΑΣ
+EL53,2,Δυτική Μακεδονία
+EL531,3,Grevena
+EL531,3,Kozani
+EL531,3,ΓΡΕΒΕΝΩΝ
+EL531,3,Γρεβενά
+EL531,3,ΚΟΖΑΝΗΣ
+EL531,3,Κοζάνη
+EL532,3,Kastoria
+EL532,3,ΚΑΣΤΟΡΙΑΣ
+EL532,3,Καστοριά
+EL533,3,Florina
+EL533,3,ΦΛΩΡΙΝΑΣ
+EL533,3,Φλώρινα
+EL54,2,Epirus
+EL54,2,Ipeiros
+EL54,2,Ήπειρος
+EL54,2,ΗΠΕΙΡΟΥ
+EL541,3,Arta
+EL541,3,Preveza
+EL541,3,Άρτα
+EL541,3,ΑΡΤΑΣ
+EL541,3,ΠΡΕΒΕΖΑΣ
+EL541,3,Πρέβεζα
+EL542,3,Thesprotia
+EL542,3,ΘΕΣΠΡΩΤΙΑΣ
+EL542,3,Θεσπρωτία
+EL543,3,Ioannina
+EL543,3,ΙΩΑΝΝΙΝΩΝ
+EL543,3,Ιωάννινα
+EL6,1,KENTRIKI ELLADA
+EL6,1,Κεντρική Ελλάδα
+EL61,2,Thessalia
+EL61,2,Thessaly
+EL61,2,ΘΕΣΣΑΛΙΑΣ
+EL61,2,Θεσσαλία
+EL611,3,Karditsa
+EL611,3,Trikala
+EL611,3,ΚΑΡΔΙΤΣΑΣ
+EL611,3,Καρδίτσα
+EL611,3,ΤΡΙΚΑΛΩΝ
+EL611,3,Τρίκαλα
+EL612,3,Larisa
+EL612,3,ΛΑΡΙΣΑΣ
+EL612,3,Λάρισα
+EL613,3,Magnisia
+EL613,3,ΜΑΓΝΗΣΙΑΣ
+EL613,3,Μαγνησία
+EL613,3,ΣΠΟΡΑΔΩΝ
+EL613,3,Σποράδες
+EL62,2,Ionia Nisia
+EL62,2,Ionian Islands
+EL62,2,ΙΟΝΙΩΝ ΝΗΣΩΝ
+EL62,2,Ιόνια Νησιά
+EL621,3,Zakynthos
+EL621,3,ΖΑΚΥΝΘΟΥ
+EL621,3,Ζάκυνθος
+EL622,3,Kerkyra
+EL622,3,ΚΕΡΚΥΡΑΣ
+EL622,3,Κέρκυρα
+EL623,3,"Ithaki, Kefallinia"
+EL623,3,ΙΘΑΚΗΣ
+EL623,3,Ιθάκη
+EL623,3,ΚΕΦΑΛΛΗΝΙΑΣ
+EL623,3,Κεφαλληνία
+EL624,3,Lefkada
+EL624,3,ΛΕΥΚΑΔΑΣ
+EL624,3,Λευκάδα
+EL63,2,Dytiki Ellada
+EL63,2,Western Greece
+EL63,2,ΔΥΤΙΚΗΣ ΕΛΛΑΔΑΣ
+EL63,2,Δυτική Ελλάδα
+EL631,3,Aitoloakarnania
+EL631,3,ΑΙΤΩΛΟΑΚΑΡΝΑΝΙΑΣ
+EL631,3,Αιτωλοακαρνανία
+EL632,3,Achaia
+EL632,3,ΑΧΑΪΑΣ
+EL632,3,Αχαΐα
+EL633,3,Ileia
+EL633,3,ΗΛΕΙΑΣ
+EL633,3,Ηλεία
+EL64,2,Central Greece
+EL64,2,Sterea Ellada
+EL64,2,ΣΤΕΡΕΑΣ ΕΛΛΑΔΑΣ
+EL64,2,Στερεά Ελλάδα
+EL641,3,Voiotia
+EL641,3,ΒΟΙΩΤΙΑΣ
+EL641,3,Βοιωτία
+EL642,3,Evvoia
+EL642,3,ΕΥΒΟΙΑΣ
+EL642,3,Εύβοια
+EL643,3,Evrytania
+EL643,3,ΕΥΡΥΤΑΝΙΑΣ
+EL643,3,Ευρυτανία
+EL644,3,Fthiotida
+EL644,3,ΦΘΙΩΤΙΔΑΣ
+EL644,3,Φθιώτιδα
+EL645,3,Fokida
+EL645,3,ΦΩΚΙΔΑΣ
+EL645,3,Φωκίδα
+EL65,2,Peloponnese
+EL65,2,Peloponnisos
+EL65,2,ΠΕΛΟΠΟΝΝΗΣΟΥ
+EL65,2,Πελοπόννησος
+EL651,3,Argolida
+EL651,3,Arkadia
+EL651,3,ΑΡΓΟΛΙΔΑΣ
+EL651,3,ΑΡΚΑΔΙΑΣ
+EL651,3,Αργολίδα
+EL651,3,Αρκαδία
+EL652,3,Korinthia
+EL652,3,ΚΟΡΙΝΘΙΑΣ
+EL652,3,Κορινθία
+EL653,3,Lakonia
+EL653,3,Messinia
+EL653,3,ΛΑΚΩΝΙΑΣ
+EL653,3,Λακωνία
+EL653,3,ΜΕΣΣΗΝΙΑΣ
+EL653,3,Μεσσηνία
+"κεα, κυθνοσ",3,"Κέα, Κύθνος"

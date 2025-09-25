@@ -1,0 +1,13 @@
+Loaded: EU_labor_market_occupations_per_skill_level.csv (enc=utf-8-sig) | rows=82646 | unique (geo,year)=5551 [geos=495, years=14] | NUTS_level=[0, 1, 2] | orig_cols=['Country_code', 'NUTS_name', 'year', 'age', 'skill_level', 'persons_per_skill_level', 'geo', 'NUTS_level']
+Loaded: EU_labor_market_unemployment.csv (enc=utf-8-sig) | rows=2928 | unique (geo,year)=2928 [geos=244, years=12] | NUTS_level=[2] | orig_cols=['geo', 'year', 'unemployment_pct', 'geo_label', 'NUTS_level', 'Country_code', 'unemployment_diff']
+Loaded: EU_labor_market_workforce_education.csv (enc=utf-8-sig) | rows=18819 | unique (geo,year)=6273 [geos=369, years=17] | NUTS_level=[0, 1, 2] | orig_cols=['geo', 'geo_label', 'NUTS_level', 'Country_code', 'year', 'education_level', 'education_level_pct', 'education_level_pct_diff']
+Loaded: EULaborMarket-SectoralEmployment.csv (enc=utf-8-sig) | rows=350336 | unique (geo,year)=25024 [geos=1564, years=16] | NUTS_level=[0, 1, 2, 3] | orig_cols=['nace_r2', 'geo', 'geo_label', 'NUTS_level', 'Country_code', 'year', 'sector_employment', 'total_employment', 'sector_employment_pct', 'sector_employment_pct_diff']
+Loaded: EULaborMarket-TotalEmployment.csv (enc=utf-8-sig) | rows=6290 | unique (geo,year)=6290 [geos=370, years=17] | NUTS_level=[0, 1, 2] | orig_cols=['geo', 'geo_label', 'NUTS_level', 'Country_code', 'year', 'total_employment', 'total_employment_pct_diff', 'population', 'employed_pct']
+Loaded: precarious_involuntary_part_time_employment.csv (enc=utf-8-sig) | rows=1428 | unique (geo,year)=1428 [geos=34, years=42] | NUTS_level=[0] | orig_cols=['geo', 'year', 'involuntary_part_time_employment', 'geo_label', 'NUTS_level', 'Country_code', 'involuntary_part_time_employment_diff']
+Loaded: precarious_NEET.csv (enc=utf-8-sig) | rows=8609 | unique (geo,year)=8609 [geos=369, years=25] | NUTS_level=[0, 1, 2] | orig_cols=['geo', 'year', 'unemployment_rate', 'geo_label', 'NUTS_level', 'Country_code', 'unemployment_rate_pct_diff']
+Loaded: precarious_part_time_employment.csv (enc=utf-8-sig) | rows=9620 | unique (geo,year)=9620 [geos=370, years=26] | NUTS_level=[0, 1, 2] | orig_cols=['geo', 'year', 'part_time_employment', 'population', 'geo_label', 'NUTS_level', 'Country_code', 'part_time_employment_pct', 'part_time_employment_diff']
+Loaded: precarious_temporary_part_time_employment.csv (enc=utf-8-sig) | rows=1020 | unique (geo,year)=1020 [geos=34, years=30] | NUTS_level=[0] | orig_cols=['geo', 'year', 'temporary_employment', 'geo_label', 'NUTS_level', 'Country_code', 'temporary_employment_diff']
+
+
+STACKED shape: (481335, 33) -> merged_by_geo_eu_stacked.csv
+DQ report: DATA_QUALITY_REPORT.md

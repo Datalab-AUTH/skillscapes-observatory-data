@@ -1,0 +1,11 @@
+Loaded: greek_tourism_Arrivals.csv (enc=utf-8-sig) | rows=783 | unique (geo,year)=594 [geos=66, years=9] | NUTS_level=[2, 3] | orig_cols=['geo', 'NUTS_label', 'NUTS_level', 'year', 'Hotel_Arrivals_Natives', 'Hotel_Arrivals_Foreign', 'Hotel_Arrivals_Total', 'Hotel_Beds', 'Hotel_Arrivals_Natives_pct_diff', 'Hotel_Arrivals_Foreign_pct_diff', 'Hotel_Arrivals_Total_pct_diff', 'Hotel_Beds_pct_diff']
+Loaded: greek_tourism_AvgExpenditureDuration.csv (enc=utf-8-sig) | rows=117 | unique (geo,year)=117 [geos=13, years=9] | NUTS_level=[2] | orig_cols=['geo', 'NUTS_label', 'NUTS_level', 'Year', 'Avg_expenditure_per_journey', 'Avg_expenditure_per_stay', 'Avg_duration_of_stay', 'Avg_expenditure_per_journey_pct_diff', 'Avg_expenditure_per_stay_pct_diff', 'Avg_duration_of_stay_pct_diff']
+Loaded: greek_tourism_GDP.csv (enc=utf-8-sig) | rows=7168 | unique (geo,year)=7168 [geos=448, years=16] | NUTS_level=[<NA>, 0, 1, 2] | orig_cols=['geo', 'NUTS_level', 'year', 'GDP', 'GDP_pct_diff']
+Loaded: greek_tourism_GFCF.csv (enc=utf-8-sig) | rows=391 | unique (geo,year)=391 [geos=17, years=23] | NUTS_level=[1, 2] | orig_cols=['geo', 'NUTS_label', 'NUTS_label_el', 'NUTS_level', 'year', 'GFCF_GHI', 'GFCF_Total', 'GFCF_pct', 'GFCF_pct_diff']
+Loaded: greek_tourism_GVA.csv (enc=utf-8-sig) | rows=1702 | unique (geo,year)=1587 [geos=69, years=23] | NUTS_level=[1, 2, 3] | orig_cols=['geo', 'NUTS_label', 'NUTS_level', 'year', 'GVA_GHI', 'GVA_total', 'GVA_GHI_pct', 'GVA_GHI_pct_diff']
+Loaded: greek_tourism_Stays.csv (enc=utf-8-sig) | rows=869 | unique (geo,year)=659 [geos=66, years=10] | NUTS_level=[2, 3] | orig_cols=['geo', 'NUTS_label', 'year', 'NUTS_level', 'Hotel_Stays_Natives', 'Hotel_Stays_Foreign', 'Hotel_Stays_Total', 'Hotel_Beds', 'Hotel_Occupancy', 'Hotel_Stays_Natives_pct_diff', 'Hotel_Stays_Foreign_pct_diff', 'Hotel_Stays_Total_pct_diff', 'Hotel_Occupancy_pct_diff']
+Loaded: greek_tourism_Turnover.csv (enc=utf-8-sig) | rows=504 | unique (geo,year)=372 [geos=62, years=6] | NUTS_level=[1, 2, 3] | orig_cols=['NUTS_label', 'NUTS_level', 'geo', 'year', 'Turnover_Catering', 'Turnover_Accomodation', 'Turnover_Catering_pct_diff', 'Turnover_Accomodation_pct_diff']
+
+
+STACKED shape: (11534, 42) -> merged_by_geo_greek_stacked.csv
+DQ report: DATA_QUALITY_REPORT.md
