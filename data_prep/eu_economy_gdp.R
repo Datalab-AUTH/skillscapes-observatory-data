@@ -24,7 +24,7 @@ d_eu_economy_gdp <- get_eurostat('nama_10r_2gdp',
   filter(year >= 2008) |>
   mutate(
     year = as.integer(year),
-    gdp_mio_eur = as.integer(gdp_mio_year),
+    gdp_mio_eur = as.integer(gdp_mio_eur),
     gdp_eur_hab = as.integer(gdp_eur_hab)
   )
 
