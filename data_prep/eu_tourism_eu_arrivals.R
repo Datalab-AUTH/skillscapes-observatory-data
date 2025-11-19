@@ -23,7 +23,7 @@ d_eu_tourism_eu_arrivals <- get_eurostat('tour_occ_arn2',
   ) |>
   mutate(
     year = as.integer(year),
-    arrivals = as.integer(arrivals)
+    arrivals = as.numeric(arrivals)
   ) |>
   filter(year >= 2008)
 
