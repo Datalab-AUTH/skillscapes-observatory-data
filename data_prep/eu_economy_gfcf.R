@@ -23,7 +23,7 @@ d_eu_economy_gfcf <- get_eurostat('nama_10r_2gfcf',
   filter(year >= 2008) |>
   mutate(
     year = as.integer(year),
-    gfcf = as.integer(gfcf)
+    gfcf = as.numeric(gfcf)
   )
 
 dbWriteTable(con_sqlite, "eu_economy_gfcf", d_eu_economy_gfcf, overwrite = TRUE)
