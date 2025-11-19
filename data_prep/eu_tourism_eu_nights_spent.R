@@ -11,6 +11,7 @@ if (!exists('con_sqlite')) {
 
 d_eu_tourism_eu_nights_spent <- get_eurostat('tour_occ_nin2',
                                              filters = list(
+                                               unit = "NR",
                                                c_resid = "TOTAL",
                                                nace_r2 = "I551-I553"
                                              ),
