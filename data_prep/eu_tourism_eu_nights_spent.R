@@ -22,7 +22,8 @@ d_eu_tourism_eu_nights_spent <- get_eurostat('tour_occ_nin2',
     "nights_spent" = "values"
   ) |>
   mutate(
-    year = as.integer(year)
+    year = as.integer(year),
+    nights_spent = as.numeric(nights_spent)
     ) |>
   filter(year >= 2008)
 
