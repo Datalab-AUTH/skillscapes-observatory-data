@@ -81,7 +81,8 @@ def extract_overnight_data(path_to_xlsx):
                 variable_name_normalized = "Occupancy"
             else:
                 variable_name_normalized = variable_name
-            variable_name_final = "_".join(["hotels", variable_name])
+            variable_name_final = "_".join(["hotels",
+                                variable_name.replace(' ', '_').lower()])
 
             # For every year column, record value
             for i, year in enumerate(years):
@@ -104,9 +105,9 @@ def extract_overnight_data(path_to_xlsx):
     return result
 
 
-# -----------------------------
-# Example usage:
-# -----------------------------
+# ----------------------------------------
+# Get data from all regions and merge them
+# ----------------------------------------
 pd.set_option('display.max_rows', None)
 pd.set_option('display.max_columns', None)
 df_attica = extract_overnight_data("Attica_Region_ENG_26.xlsx")
