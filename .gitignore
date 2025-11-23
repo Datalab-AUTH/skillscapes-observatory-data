@@ -1,4 +1,4 @@
 skillscapes.sqlite
 data_prep/env
-data_INSETE/INSETE*.csv
+data_prep/INSETE/*.csv
 venv
