@@ -103,7 +103,7 @@ def extract_STR_data(excel_file, sheet_name):
                 "region": current_region,
                 "month": month,
                 "year": year,
-                "STR_accomodation_beds_by_month": value
+                "STR_accomodation_beds": value
             })
 
     # Convert to DataFrame

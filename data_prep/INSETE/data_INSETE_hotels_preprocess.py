@@ -15,74 +15,67 @@ def extract_overnight_data(path_to_xlsx):
     # Load the workbook
     df = pd.read_excel(path_to_xlsx, sheet_name=match_names["Arrivals-overnights-Occupancy".lower()], header=None)
 
-    # ------------------------------------------------------------------
-    # 1. Locate the header row (the row where column A == "Regional Unit")
-    # ------------------------------------------------------------------
-    header_row_idx = df.index[df[0].astype(str).str.startswith("Regional Unit", na=False)]
-    if len(header_row_idx) == 0:
+    # Locate the header rows (the rows where column A == "Regional Unit")
+    header_row_ids = df.index[df[0].astype(str).str.startswith("Regional Unit", na=False)]
+    if len(header_row_ids) == 0:
         raise ValueError("Could not find a row where column A contains 'Regional Unit'")
-    header_row = header_row_idx[0]
 
-    # ------------------------------------------------------------------
-    # 2. Extract year labels from the header row (columns C onward)
-    # ------------------------------------------------------------------
-    years = []
-    for col in range(2, df.shape[1]):
-        val = df.at[header_row, col]
-        if pd.isna(val):
-            break
-        years.append(int(val))
-
-    # ------------------------------------------------------------------
-    # 3. Extract the REGION_NAME (cell A3)
-    # ------------------------------------------------------------------
-    cell_A3 = str(df.at[2, 0])  # A3 is row index 2, col index 0
-    region_name_for_total = extract_region_name(cell_A3) 
-
-    # ------------------------------------------------------------------
-    # 4. Walk through rows below the header and collect region + variables
-    # ------------------------------------------------------------------
     data_rows = []
-    current_region = None
+    for header_row in header_row_ids:
+        # Extract year labels from the header row (columns C onward)
+        years = []
+        for col in range(2, df.shape[1]):
+            val = df.at[header_row, col]
+            if pd.isna(val):
+                break
+            years.append(int(val))
 
-    row = header_row + 1
-    while row < len(df):
-        region_candidate = df.at[row, 0]
-        variable_name = df.at[row, 1]
+        # Extract the REGION_NAME
+        cell_region_name = str(df.at[header_row - 1, 0])
+        region_name_for_total = extract_region_name(cell_region_name) 
 
-        # If both Region and Variable are NaN, we reached the end
-        if pd.isna(region_candidate) and pd.isna(variable_name):
-            break
+        # Walk through rows below the header and collect region + variables
+        current_region = None
 
-        # Update region label when new text appears
-        if isinstance(region_candidate, str) and region_candidate.strip() != "":
-            current_region = region_candidate.strip()
+        row = header_row + 1
+        while row < len(df):
+            region_candidate = df.at[row, 0]
+            variable_name = df.at[row, 1]
 
-        # Skip rows until we have a region and a variable name
-        if current_region is None or pd.isna(variable_name):
-            row += 1
-            continue
+            # If both Region and Variable are NaN, we reached the end
+            if pd.isna(region_candidate) and pd.isna(variable_name):
+                break
 
-        # Replace "Total" region with extracted REGION_NAME
-        if current_region == "Total":
-            current_region = region_name_for_total
+            # Update region label when new text appears
+            if isinstance(region_candidate, str) and region_candidate.strip() != "":
+                current_region = region_candidate.strip()
 
-        variable_name = str(variable_name).strip()
+            # Skip rows until we have a region and a variable name
+            if current_region is None or pd.isna(variable_name):
+                row += 1
+                continue
 
-        # Only capture known variable categories
-        if (variable_name in [
-                "Foreign arrivals",
-                "Domestic arrivals",
-                "Foreign overnights",
-                "Domestic overnights" 
-            ]) or variable_name.startswith("Occupancy"):
+            # Replace "Total" region with extracted REGION_NAME
+            if current_region == "Total":
+                current_region = region_name_for_total
 
-            if variable_name.startswith("Occupancy"):
-                variable_name_normalized = "Occupancy"
+            variable_name = str(variable_name).strip().lower()
+
+            # Only capture known variable categories
+            if variable_name.startswith("foreign arr"):
+                variable_name_final = "Foreign arrivals"
+            elif variable_name.startswith("domestic arr"):
+                variable_name_final = "Domestic arrivals"
+            elif variable_name.startswith("foreign over"):
+                variable_name_final = "Foreign overnights"
+            elif variable_name.startswith("domestic over"):
+                variable_name_final = "Domestic overnights"
+            elif variable_name.startswith("occup") or variable_name.endswith("occupancy"):
+                variable_name_final = "Occupancy"
             else:
-                variable_name_normalized = variable_name
+                continue
             variable_name_final = "_".join(["hotels",
-                                variable_name.replace(' ', '_').lower()])
+                                variable_name_final.replace(' ', '_').lower()])
 
             # For every year column, record value
             for i, year in enumerate(years):
@@ -98,7 +91,7 @@ def extract_overnight_data(path_to_xlsx):
                     "value": val
                 })
 
-        row += 1
+            row += 1
 
     # Convert to DataFrame
     result = pd.DataFrame(data_rows)
