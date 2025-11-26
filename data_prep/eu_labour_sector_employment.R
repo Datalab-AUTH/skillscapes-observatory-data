@@ -44,16 +44,16 @@ d_eu_labour_sector_employment <- dbGetQuery(con_postgres, "SELECT * FROM rslb_us
   ) |>
   mutate(
     year = as.integer(year),
-    sector_a = as.integer(1000 * sector_a),
-    sector_bde = as.integer(1000 * sector_bde),
-    sector_c = as.integer(1000 * sector_c),
-    sector_f = as.integer(1000 * sector_f),
-    sector_g = as.integer(1000 * sector_g),
-    sector_h = as.integer(1000 * sector_h),
-    sector_i = as.integer(1000 * sector_i),
-    sector_jklmnu = as.integer(1000 * sector_jklmnu),
-    sector_opq = as.integer(1000 * sector_opq),
-    sector_rst = as.integer(1000 * sector_rst)
+    sector_a = 1000 * sector_a,
+    sector_bde = 1000 * sector_bde,
+    sector_c = 1000 * sector_c,
+    sector_f = 1000 * sector_f,
+    sector_g = 1000 * sector_g,
+    sector_h = 1000 * sector_h,
+    sector_i = 1000 * sector_i,
+    sector_jklmnu = 1000 * sector_jklmnu,
+    sector_opq = 1000 * sector_opq,
+    sector_rst = 1000 * sector_rst
   ) |>
   left_join(d_eu_labour_total_employment, by=c("geo", "year")) |>
   mutate(
