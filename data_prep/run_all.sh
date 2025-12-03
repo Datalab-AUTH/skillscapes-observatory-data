@@ -26,5 +26,6 @@ docker run --rm -ti -u `id -u`:`id -g` -v `pwd`:/app -v /tmp:/tmp \
 		python data_INSETE_short_stay_preprocess.py && \
 		python data_INSETE_employment.py && \
 		python data_INSETE_key_figures_preprocess.py && \
+		python data_INSETE_hotel_capacity_preprocess.py && \
 		python data_INSETE_STR_preprocess.py'
 
