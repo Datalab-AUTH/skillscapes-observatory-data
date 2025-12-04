@@ -1,5 +1,10 @@
 #!/usr/bin/Rscript
 
+# The INSETE stuff needs to run first in order to generate data for the
+# gen_nuts.R script.
+
+source('gr_INSETE.R')
+
 source('gen_population.R')
 source('gen_land_area.R')
 source('gen_nuts.R')

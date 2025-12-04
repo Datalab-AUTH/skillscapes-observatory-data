@@ -12,13 +12,9 @@ if [ -f env ]; then
 	done
 fi
 
-${RSCRIPT_CMD} all.R
-
-#
-# Now for the INSETE stuff
-#
-
-# First, preprocess the excel files to make the csv files
+# First, the INSETE stuff. We'll need the region_codes_EL.csv file this
+# generates for the gen_nuts.R file.
+# So, preprocess the INSETE excel files to make the respective csv files.
 docker run --rm -ti -u `id -u`:`id -g` -v `pwd`:/app -v /tmp:/tmp \
 	datalabauth/skillscapes-python \
 	/bin/sh -c 'cd INSETE; \
@@ -28,4 +24,8 @@ docker run --rm -ti -u `id -u`:`id -g` -v `pwd`:/app -v /tmp:/tmp \
 		python data_INSETE_key_figures_preprocess.py && \
 		python data_INSETE_hotel_capacity_preprocess.py && \
 		python data_INSETE_STR_preprocess.py'
+
+# Now run everything
+
+${RSCRIPT_CMD} all.R
 

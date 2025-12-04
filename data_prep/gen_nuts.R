@@ -34,8 +34,30 @@ d_countries <- d_gen_nuts |>
     country_name = geo_label
   ) |>
   select(country_code, country_name)
-d_gen_nuts <- d_gen_nuts |>
-  left_join(d_countries, by='country_code')
 
-dbWriteTable(con_sqlite, "gen_nuts", d_gen_nuts, overwrite = TRUE)
+# now, take all the Greek regions that have no NUTS equivalent and join them
+# with the ones that do, but are not included in the first list.
+d_nuts2_and_region_codes_EL <- read_csv("region_codes_EL.csv")
+
+d_region_codes_only_EL <- d_nuts2_and_region_codes_EL |>
+  filter(!str_detect(geo, "\\d$")) |> # only keep regional units, no NUTS3/2
+  mutate(
+    nuts_level = 4,
+    country_code = "EL"
+  )
+
+# regional units might be with nuts_level=3 or nuts_level=4, so we need
+# something else to tell them apart
+d_nuts2_and_region_codes_only_EL <- d_nuts2_and_region_codes_EL |>
+  select(geo) |>
+  mutate(is_el_regional_unit = 1) 
+
+d_gen_nuts_all <- d_gen_nuts |>
+  rbind(d_region_codes_only_EL) |>
+  left_join(d_nuts2_and_region_codes_only_EL, by='geo') |>
+  left_join(d_countries, by='country_code') |>
+  mutate(is_el_regional_unit = if_else(is.na(is_el_regional_unit), 0, is_el_regional_unit)) |>
+  relocate(is_el_regional_unit, .after=nuts_level)
+  
+dbWriteTable(con_sqlite, "gen_nuts", d_gen_nuts_all, overwrite = TRUE)
 
