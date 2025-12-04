@@ -1,10 +1,6 @@
 #!/bin/bash
 
-#
-# All these are for the Eurostat and Aegean DB data
-# 
-
-RSCRIPT_CMD="docker run --rm -ti -u `id -u`:`id -g` -v `pwd`:/app -v /tmp:/tmp datalabauth/skillscapes-r Rscript"
+cd data_prep
 
 if [ -f env ]; then
 	for line in env; do
@@ -27,5 +23,7 @@ docker run --rm -ti -u `id -u`:`id -g` -v `pwd`:/app -v /tmp:/tmp \
 
 # Now run everything
 
-${RSCRIPT_CMD} all.R
+docker run --rm -ti -u `id -u`:`id -g` -v `pwd`:/app -v /tmp:/tmp \
+	datalabauth/skillscapes-r \
+	Rscript all.R
 
