@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import pandas as pd
+import sys
 import re
 
 def clean_region_name(s):
@@ -28,7 +29,7 @@ def extract_hotel_capacity(path_to_xlsx):
 
     while True:
         # Find next "Regional Unit"
-        ru_rows = df.index[df[0].astype(str) == "Regional Unit"]
+        ru_rows = df.index[df[0].astype(str).str.startswith("Regional Unit")]
         ru_rows = [r for r in ru_rows if r >= row]
 
         if not ru_rows:
@@ -94,6 +95,9 @@ def extract_hotel_capacity(path_to_xlsx):
 
         row = r + 1  # continue searching after this table
 
+    if len(results) == 0:
+        print("No results for f{path_to_xlsx}")
+        sys.exit(1)
     return pd.DataFrame(results)
 
 # ----------------------------------------
