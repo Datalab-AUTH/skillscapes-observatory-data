@@ -5,6 +5,15 @@
 
 source('gr_INSETE.R')
 
+# also the Greek population data
+source('gr_population.R')
+# and the land area data
+source('gr_land_area.R')
+
+# ELSTAT data for tourism turnover
+source('gr_ELSTAT.R')
+
+# now go on with the rest of the data from eurostat and reslab
 source('gen_population.R')
 source('gen_land_area.R')
 source('gen_nuts.R')
@@ -52,4 +61,3 @@ source('eu_tourism_eu_short_stay.R')
 source('eu_tourism_eu_gfcf.R')
 source('eu_tourism_eu_arrivals.R')
 
-source('gr_ELSTAT.R')
