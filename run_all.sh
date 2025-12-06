@@ -21,7 +21,15 @@ docker run --rm -ti -u `id -u`:`id -g` -v `pwd`:/app -v /tmp:/tmp \
 		python data_INSETE_hotel_capacity_preprocess.py && \
 		python data_INSETE_STR_preprocess.py'
 
-# Now run everything
+# Then we need to run the ELSTAT and population by region stuff
+docker run --rm -ti -u `id -u`:`id -g` -v `pwd`:/app -v /tmp:/tmp \
+	datalabauth/skillscapes-python \
+	/bin/sh -c 'cd ELSTAT; \
+		python data_ELSTAT_preprocess.py;
+		python data_population_preprocess.py;
+		python data_land_area_preprocess.py'
+
+# Now run everything else
 
 docker run --rm -ti -u `id -u`:`id -g` -v `pwd`:/app -v /tmp:/tmp \
 	datalabauth/skillscapes-r \
