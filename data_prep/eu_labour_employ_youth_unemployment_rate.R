@@ -9,7 +9,7 @@ if (!exists('con_sqlite')) {
   con_sqlite <- dbConnect(RSQLite::SQLite(), "skillscapes.sqlite")
 }
 
-d_eu_labour_youth_unemployment_rate <- get_eurostat('lfst_r_lfu3pers',
+d_eu_labour_youth_unemployment_rate <- get_eurostat('lfst_r_lfu3rt',
                   filters = list(
                     age = 'Y15-29',
                     sex = 'T',
