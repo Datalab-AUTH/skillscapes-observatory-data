@@ -24,7 +24,7 @@ d_eu_labour_youth_unemployment <- get_eurostat('lfst_r_lfu3pers',
   filter(year >= 2008) |>
   mutate(
     year = as.integer(year),
-    youth_unemployment = as.integer(1000 * youth_unemployment)
+    youth_unemployment = 1000 * youth_unemployment
   )
 
 dbWriteTable(con_sqlite, "eu_labour_youth_unemployment", d_eu_labour_youth_unemployment, overwrite = TRUE)
