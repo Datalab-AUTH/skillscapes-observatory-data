@@ -31,7 +31,7 @@ d_eu_labour_precarity_neets <- dbGetQuery(con_postgres, "SELECT * FROM rslb_user
   ) |>
   mutate(
     year = as.integer(year),
-    neets = as.integer(1000 * neets),
+    neets = 1000 * neets
   )
   
 dbWriteTable(con_sqlite, "eu_labour_precarity_neets", d_eu_labour_precarity_neets, overwrite = TRUE)
