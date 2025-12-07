@@ -22,17 +22,16 @@ if (!exists('con_postgres')) {
   )
 }
 
-#d_eu_labour_youth_employment <- dbReadTable(con_postgres, "rslb_user.b63_neets_full") |>
-d_eu_labour_youth_employment <- dbGetQuery(con_postgres, "SELECT * FROM rslb_user.b63_neets_full") |>
+d_eu_labour_youth_employment_rate <- dbGetQuery(con_postgres, "SELECT * FROM rslb_user.b63_neets_full") |>
   filter(sex == "T") |>
   rename(
     "geo" = "nuts_id",
-    "youth_employment" = "employment"
+    "youth_employment_rate" = "employment_pop_prc"
   ) |>
-  select(geo, year, youth_employment) |>
+  select(geo, year, youth_employment_rate) |>
   mutate(
     year = as.integer(year)
   )
 
-dbWriteTable(con_sqlite, "eu_labour_youth_employment", d_eu_labour_youth_employment, overwrite = TRUE)
+dbWriteTable(con_sqlite, "eu_labour_youth_employment_rate", d_eu_labour_youth_employment_rate, overwrite = TRUE)
 
