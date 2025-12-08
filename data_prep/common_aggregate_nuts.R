@@ -38,3 +38,13 @@ aggregate_regional_to_nuts3 <- function(data, geo, year) {
     rename({{geo}} := NUTS3) |>
     relocate({{geo}}, .before=everything())
 }
+
+# Function that checks for the presense of NAs in a dataframe column. Quits
+# if it finds any. Example:
+# check_for_NAs(df, "mycolumn")
+check_for_NAs <- function(df, col) {
+  if (any(is.na(df[[col]]))) {
+    message("Column '", col, "' contains missing values.")
+    quit(status = 1)   # exit R session with error code
+  }
+}
