@@ -44,5 +44,5 @@ def read_excel(file_path):
 
     return long_df
 
-df = read_excel("Population_ΠΕ.xlsx")
+df = read_excel("Regional units_pop.xlsx")
 df.to_csv("population_by_region.csv", index=False)
