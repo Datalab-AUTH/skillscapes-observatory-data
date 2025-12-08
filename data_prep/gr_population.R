@@ -14,8 +14,8 @@ region_lookup <- tribble(
   ~region, ~geo,
   "ATTIKI", "EL30",
   "FORMER PERFECTURE OF DODEKANISOS", "EL421",
-  "FORMER PERFECTURE OF KYKLADES3", "EL422",
-  "REGIONAL UNIT OF  SPORADES", "EL613b",
+  "FORMER PERFECTURE OF KYKLADES", "EL422",
+  "REGIONAL UNIT OF SPORADES", "EL613b",
   "REGIONAL UNIT OF ACHAIA", "EL632",
   "REGIONAL UNIT OF AITOLOAKARNANIA", "EL631",
   "REGIONAL UNIT OF ARGOLIDA", "EL651a",
@@ -73,25 +73,27 @@ region_lookup <- tribble(
   "REGIONAL UNIT OF VOIOTIA", "EL641",
   "REGIONAL UNIT OF XANTHI", "EL512",
   "REGIONAL UNIT OF ZAKYNTHOS", "EL621",
-  "Π.Ε. ΑΝΔΡΟΥ", "EL422a",
-  "Π.Ε. ΒΟΡΕΙΟΥ ΤΟΜΕΑ ΑΘΗΝΩΝ", "EL301",
-  "Π.Ε. ΔΥΤΙΚΗΣ ΑΤΤΙΚΗΣ", "EL306",
-  "Π.Ε. ΕΝΟΤΗΤΑ ΑΝΑΤΟΛΙΚΗΣ ΑΤΤΙΚΗΣ", "EL305",
-  "Π.Ε. ΕΝΟΤΗΤΑ ΔΥΤΙΚΟΥ ΤΟΜΕΑ ΑΘΗΝΩΝ", "EL302",
-  "Π.Ε. ΕΝΟΤΗΤΑ ΝΟΤΙΟΥ ΤΟΜΕΑ ΑΘΗΝΩΝ", "EL304",
-  "Π.Ε. ΘΗΡΑΣ", "EL422b",
-  "Π.Ε. ΚΑΛΥΜΝΟΥ", "EL421a",
-  "Π.Ε. ΚΑΡΠΑΘΟΥ", "EL421b",
-  "Π.Ε. ΚΕΑΣ", "EL422c",
-  "Π.Ε. ΚΩ", "EL421c",
-  "Π.Ε. ΜΗΛΟΥ", "EL422d",
-  "Π.Ε. ΜΥΚΟΝΟΥ", "EL422e",
-  "Π.Ε. ΝΑΞΟΥ", "EL422f",
-  "Π.Ε. ΠΑΡΟΥ", "EL422g",
-  "Π.Ε. ΡΟΔΟΥ", "EL421d",
-  "Π.Ε. ΣΥΡΟΥ", "EL422h",
-  "Π.Ε. ΤΗΝΟΥ", "EL422i",
-  "Π.Ε.ΚΕΝΤΡΙΚΟΥ ΤΟΜΕΑ ΑΘΗΝΩΝ", "EL303"
+  "REGIONAL UNIT OF ANDROS", "EL422a",
+  "REGIONAL UNIT OF NORTH ATHENS", "EL301",
+  "REGIONAL UNIT OF WEST ATTICA", "EL306",
+  "REGIONAL UNIT OF EAST ATTICA", "EL305",
+  "REGIONAL UNIT OF WEST ATHENS", "EL302",
+  "REGIONAL UNIT OF SOUTH ATHENS", "EL304",
+  "REGIONAL UNIT OF THIRA", "EL422b",
+  "REGIONAL UNIT OF KALYMNOS", "EL421a",
+  "REGIONAL UNIT OF KARPATHOS & KASOS", "EL421b",
+  "REGIONAL UNIT OF KEA", "EL422c",
+  "REGIONAL UNIT OF KOS", "EL421c",
+  "REGIONAL UNIT OF MILOS", "EL422d",
+  "REGIONAL UNIT OF MYKONOS", "EL422e",
+  "REGIONAL UNIT OF NAXOS", "EL422f",
+  "REGIONAL UNIT OF PAROS", "EL422g",
+  "REGIONAL UNIT OF RHODES", "EL421d",
+  "REGIONAL UNIT OF SYROS", "EL422h",
+  "REGIONAL UNIT OF TINOS", "EL422i",
+  "REGIONAL UNIT OF CENTRAL ATHENS", "EL303",
+  "REGIONAL UNIT OF PIRAIUS", "EL307a",
+  "REGIONAL UNIT OF ISLANDS", "EL307b"
 )
 
 d <- read_csv("ELSTAT/population_by_region.csv") |>
@@ -99,6 +101,8 @@ d <- read_csv("ELSTAT/population_by_region.csv") |>
   select(-region) |>
   relocate(geo, .before=everything()) |>
   mutate(year = as.integer(year))
+
+check_for_NAs(d, "geo")
 
 d_nuts3 <- aggregate_regional_to_nuts3(d, geo, year) |>
   rows_upsert(d, by=c("geo", "year"))
