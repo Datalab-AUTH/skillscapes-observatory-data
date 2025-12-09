@@ -23,9 +23,7 @@ d_gen_population <- get_eurostat('demo_r_d2jan',
   rename("population_total" = "TOTAL") |>
   select(-starts_with('Y', ignore.case=F)) |>
   mutate(
-    year = as.integer(year),
-    population_total = as.integer(population_total),
-    population_15_29 = as.integer(population_15_29)
+    year = as.integer(year)
   )
 
 dbWriteTable(con_sqlite, "gen_population", d_gen_population, overwrite = TRUE)
