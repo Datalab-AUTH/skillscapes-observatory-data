@@ -68,7 +68,7 @@ def extract_overnight_data(path_to_xlsx):
             
             variable_name = str(variable_name).strip().lower()
             
-            # Only capture known2 variable categories
+            # Only capture known variable categories
             if variable_name.startswith("foreign arr"):
                 variable_name_final = "Foreign arrivals"
             elif variable_name.startswith("domestic arr"):
@@ -82,7 +82,7 @@ def extract_overnight_data(path_to_xlsx):
             else:
                 continue
             variable_name_final = "_".join(["short_stay",
-                            variable_name.replace(' ', '_').lower()])
+                            variable_name.replace(' ', '_').lower().replace("arrivlas", "arrivals")])
 
             # For every year column, record value
             for i, year in enumerate(years):
