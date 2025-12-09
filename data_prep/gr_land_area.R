@@ -100,6 +100,6 @@ d_nuts2 <- aggregate_nuts3_to_nuts2(d_nuts3, geo, NA) |>
   select(geo, land_area)
 d_nuts1 <- aggregate_nuts2_to_nuts1(d_nuts2, geo, NA)  |>
   select(geo, land_area)
-d_land_area <- rbind(d_nuts1, d_nuts2, d_nuts3)
+d_gr_land_area <- rbind(d_nuts1, d_nuts2, d_nuts3)
 
-dbWriteTable(con_sqlite, "gr_land_area", d_land_area, overwrite = TRUE)
+dbWriteTable(con_sqlite, "gr_land_area", d_gr_land_area, overwrite = TRUE)

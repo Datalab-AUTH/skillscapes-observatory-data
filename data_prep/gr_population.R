@@ -108,6 +108,6 @@ d_nuts3 <- aggregate_regional_to_nuts3(d, geo, year) |>
   rows_upsert(d, by=c("geo", "year"))
 d_nuts2 <- aggregate_nuts3_to_nuts2(d_nuts3, geo, year)
 d_nuts1 <- aggregate_nuts2_to_nuts1(d_nuts2, geo, year)
-d_population <- rbind(d_nuts1, d_nuts2, d_nuts3)
+d_gr_population <- rbind(d_nuts1, d_nuts2, d_nuts3)
 
-dbWriteTable(con_sqlite, "gr_population", d, overwrite = TRUE)
+dbWriteTable(con_sqlite, "gr_population", d_gr_population, overwrite = TRUE)
