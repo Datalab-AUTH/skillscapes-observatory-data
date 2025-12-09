@@ -9,7 +9,7 @@ if (!exists('con_sqlite')) {
   con_sqlite <- dbConnect(RSQLite::SQLite(), "skillscapes.sqlite")
 }
 
-d_gen_nuts <- get_eurostat_dic('geo') |>
+d_gen_nuts_eurostat <- get_eurostat_dic('geo') |>
   rename(
     geo = code_name,
     geo_label = full_name
@@ -28,7 +28,7 @@ d_gen_nuts <- get_eurostat_dic('geo') |>
          nuts_level = as.integer(nuts_level),
          country_code = str_sub(geo, 1, 2),
     )
-d_countries <- d_gen_nuts |>
+d_countries <- d_gen_nuts_eurostat |>
   filter(geo == country_code) |>
   rename(
     country_name = geo_label
@@ -52,12 +52,12 @@ d_nuts2_and_region_codes_only_EL <- d_nuts2_and_region_codes_EL |>
   select(geo) |>
   mutate(is_el_regional_unit = 1) 
 
-d_gen_nuts_all <- d_gen_nuts |>
+d_gen_nuts <- d_gen_nuts_eurostat |>
   rbind(d_region_codes_only_EL) |>
   left_join(d_nuts2_and_region_codes_only_EL, by='geo') |>
   left_join(d_countries, by='country_code') |>
   mutate(is_el_regional_unit = if_else(is.na(is_el_regional_unit), 0, is_el_regional_unit)) |>
   relocate(is_el_regional_unit, .after=nuts_level)
   
-dbWriteTable(con_sqlite, "gen_nuts", d_gen_nuts_all, overwrite = TRUE)
+dbWriteTable(con_sqlite, "gen_nuts", d_gen_nuts, overwrite = TRUE)
 
