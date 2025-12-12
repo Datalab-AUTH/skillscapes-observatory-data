@@ -123,7 +123,7 @@ def extract_employment_data(excel_path):
     df_emp_all = pd.DataFrame({
         "region": region,
         "year": years_emp,
-        "employment_accomodation_catering": emp_accom_cat,
+        "employment_accommodation_catering": emp_accom_cat,
         "employment_other": emp_other,
         "employment_total": emp_total,
         "employment_total_greece": emp_greece

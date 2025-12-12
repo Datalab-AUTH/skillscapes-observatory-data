@@ -303,14 +303,14 @@ d_STR_all <- d_STR_nuts3 |>
   ) |>
   select(-year_month) |>
   relocate(geo, .before=everything()) |>
-  relocate(STR_accomodation_beds, .after=everything())
+  relocate(STR_accommodation_beds, .after=everything())
 dbWriteTable(con_sqlite, "gr_insete_STR", d_STR_all, overwrite = TRUE)
 
 # The STR data are monthly. We need them on a yearly basis. We'll keep the max value.
 d_STR_yearly <- d_STR_all |>
   select(-month) |>
   group_by(geo, year) |>
-  summarize(STR_accomodation_beds = max(STR_accomodation_beds, na.rm = TRUE)) |>
+  summarize(STR_accommodation_beds = max(STR_accommodation_beds, na.rm = TRUE)) |>
   ungroup()
 
 dbWriteTable(con_sqlite, "gr_insete_STR_yearly", d_STR_yearly, overwrite = TRUE)

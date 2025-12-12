@@ -158,10 +158,10 @@ d <- rbind(d_elstat_NUTS1, d_elstat_NUTS2, d_elstat_NUTS3) |>
   filter(geo != "ΑΤΤΙΚΗΣ*") |> # There are not NUTS3 data for Attiki
   rename(
     "turnover_catering" = "Turnover_Catering",
-    "turnover_accomodation" = "Turnover_Accomodation"
+    "turnover_accommodation" = "Turnover_Accomodation"
   ) |>
   mutate(
-    turnover_total = turnover_catering + turnover_accomodation,
+    turnover_total = turnover_catering + turnover_accommodation,
     year = as.integer(year)
     )
 dbWriteTable(con_sqlite, "gr_elstat", d, overwrite = TRUE)
