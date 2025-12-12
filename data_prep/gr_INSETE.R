@@ -8,6 +8,13 @@ if (!exists('con_sqlite')) {
   con_sqlite <- dbConnect(RSQLite::SQLite(), "skillscapes.sqlite")
 }
 
+if (!exists('d_gr_population')) {
+  source('gr_population.R')
+}
+if (!exists('d_gr_land_area')) {
+  source('gr_land_area.R')
+}
+
 source('common_aggregate_nuts.R')
 
 NUTS2_lookup <- tribble(
@@ -263,7 +270,15 @@ d_hotel_capacity_nuts1 <- aggregate_nuts2_to_nuts1(d_hotel_capacity, geo, year)
 d_hotel_capacity_all <- d_hotel_capacity |>
   rbind(d_hotel_capacity_remaining_nuts3) |>
   rbind(d_hotel_capacity_nuts1) |>
-  relocate(geo, .before=everything())
+  relocate(geo, .before=everything()) |>
+  left_join(d_gr_population, by=c("geo", "year")) |>
+  left_join(d_gr_land_area, by="geo") |>
+  mutate(
+    guest_beds_per_person = guest_beds / population,
+    guest_beds_per_person = ifelse(is.infinite(guest_beds_per_person), NA, guest_beds_per_person), # there are zeros in the population data
+    guest_beds_per_km2 = guest_beds / land_area
+  ) |>
+  select(-population, -land_area)
 
 dbWriteTable(con_sqlite, "gr_insete_hotel_capacity", d_hotel_capacity_all, overwrite = TRUE)
 
