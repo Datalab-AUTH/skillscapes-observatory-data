@@ -40,6 +40,8 @@ source('eu_labour_employ_weekly_hours.R')
 
 source('eu_labour_employ_employees.R')
 
+source('eu_labour_permanent_temporary_employment.R')
+
 source('eu_labour_sector_employment.R')
 
 source('eu_labour_skill_skills.R')
