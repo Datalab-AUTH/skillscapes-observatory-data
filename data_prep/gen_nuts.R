@@ -57,7 +57,11 @@ d_gen_nuts <- d_gen_nuts_eurostat |>
   left_join(d_nuts2_and_region_codes_only_EL, by='geo') |>
   left_join(d_countries, by='country_code') |>
   mutate(is_el_regional_unit = if_else(is.na(is_el_regional_unit), 0, is_el_regional_unit)) |>
-  relocate(is_el_regional_unit, .after=nuts_level)
+  relocate(is_el_regional_unit, .after=nuts_level) |>
+  mutate(
+    nuts_level = as.integer(nuts_level),
+    is_el_regional_unit = as.integer(is_el_regional_unit)
+  )
   
 dbWriteTable(con_sqlite, "gen_nuts", d_gen_nuts, overwrite = TRUE)
 
