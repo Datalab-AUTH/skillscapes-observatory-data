@@ -9,7 +9,7 @@ if (!exists('con_sqlite')) {
   con_sqlite <- dbConnect(RSQLite::SQLite(), "skillscapes.sqlite")
 }
 
-d_eu_economy_gdp <- get_eurostat('nama_10r_2gdp',
+d_eu_economy_gdp <- get_eurostat('nama_10r_3gdp',
                   filters = list(
                     unit = c('MIO_EUR', 'EUR_HAB')
                   ),
