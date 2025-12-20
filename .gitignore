@@ -1,4 +1,8 @@
 skillscapes.sqlite
 data_prep/env
 data_prep/INSETE/*.csv
+data_prep/ELSTAT/ELSTAT_SBR03.csv
+data_prep/ELSTAT/gr_land_area.csv
+data_prep/ELSTAT/population_by_region.csv
+data_prep/region_codes_EL.csv
 venv
