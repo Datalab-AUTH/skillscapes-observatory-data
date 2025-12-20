@@ -29,6 +29,15 @@ docker run --rm -ti -u `id -u`:`id -g` -v `pwd`:/app -v /tmp:/tmp \
 		python data_population_preprocess.py;
 		python data_land_area_preprocess.py'
 
+# And the full-time/part-time and permanent/temporary imployment data
+# that we get from Reslab's microdata app (see comment at the top of the
+# data-prep/microdata/microdata.py file on how to get those from the
+# microdata app's GUI).
+docker run --rm -ti -u `id -u`:`id -g` -v `pwd`:/app -v /tmp:/tmp \
+	datalabauth/skillscapes-python \
+	/bin/sh -c 'cd microdata; \
+		python microdata.py'
+
 # Now run everything else
 
 docker run --rm -ti -u `id -u`:`id -g` -v `pwd`:/app -v /tmp:/tmp \
