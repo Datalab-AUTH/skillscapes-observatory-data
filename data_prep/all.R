@@ -35,6 +35,7 @@ source('eu_labour_employ_youth_long_term_unemployment_rate.R')
 source('eu_labour_employ_total_employment_rate.R')
 source('eu_labour_employ_unemployment_rate.R')
 source('eu_labour_employ_part_full_time_employment.R')
+source('eu_labour_employ_long_term.R')
 
 source('eu_labour_employ_weekly_hours.R')
 
