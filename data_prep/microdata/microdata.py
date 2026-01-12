@@ -33,7 +33,7 @@ df_involuntary_part_time = df_ftpt[\
       (df_ftpt["FTPT"]=="Part-time job")&\
       (df_ftpt["FTPTREAS"]=="Could not find a full-time job")&\
       (df_ftpt["AGE_GRP"].isin(["15-19 years of age",
-                                "20-24 years of age"
+                                "20-24 years of age",
                                 "25-29 years of age",
                                 "30-34 years of age",
                                 "35-39 years of age",
@@ -71,7 +71,7 @@ df_involuntary_temporary = df_temp[\
       (df_temp["TEMP"]=="Fixed-term job")&\
       (df_temp["TEMPREAS"]=="Could not find a permanent job")&\
       (df_temp["AGE_GRP"].isin(["15-19 years of age",
-                                "20-24 years of age"
+                                "20-24 years of age",
                                 "25-29 years of age",
                                 "30-34 years of age",
                                 "35-39 years of age",
@@ -100,7 +100,7 @@ df_part_time = df_ftpt[\
       (df_ftpt["FTPT"]=="Full-time job")&\
       # (df_ftpt["FTPTREAS"]=="Could not find a full-time job")&\
       (df_ftpt["AGE_GRP"].isin(["15-19 years of age",
-                                "20-24 years of age"
+                                "20-24 years of age",
                                 "25-29 years of age",
                                 "30-34 years of age",
                                 "35-39 years of age",
@@ -128,7 +128,7 @@ df_part_time = df_ftpt[\
       (df_ftpt["FTPT"]=="Part-time job")&\
       # (df_ftpt["FTPTREAS"]=="Could not find a full-time job")&\
       (df_ftpt["AGE_GRP"].isin(["15-19 years of age",
-                                "20-24 years of age"
+                                "20-24 years of age",
                                 "25-29 years of age",
                                 "30-34 years of age",
                                 "35-39 years of age",
@@ -155,7 +155,7 @@ df_temporary = df_temp[\
       (df_temp["TEMP"]=="Fixed-term job")&\
       # (df_temp["TEMPREAS"]=="Could not find a permanent job")&\
       (df_temp["AGE_GRP"].isin(["15-19 years of age",
-                                "20-24 years of age"
+                                "20-24 years of age",
                                 "25-29 years of age",
                                 "30-34 years of age",
                                 "35-39 years of age",
@@ -181,7 +181,7 @@ df_temporary = df_temp[\
       (df_temp["TEMP"]=="Permanent job")&\
       # (df_temp["TEMPREAS"]=="Could not find a permanent job")&\
       (df_temp["AGE_GRP"].isin(["15-19 years of age",
-                                "20-24 years of age"
+                                "20-24 years of age",
                                 "25-29 years of age",
                                 "30-34 years of age",
                                 "35-39 years of age",
@@ -201,4 +201,3 @@ df_temporary = df_temporary[["REGION_2D", "YEAR", "Population (inferred)"]].rena
     )
 df_temporary = df_temporary.groupby(by=["geo","year"]).sum().reset_index()
 df_temporary.to_csv(SAVE_FILENAME_PE, index=False)
-
