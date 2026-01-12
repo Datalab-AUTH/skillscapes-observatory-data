@@ -153,7 +153,13 @@ d_employment_nuts2 <- read_csv("INSETE/INSETE_employment.csv") |>
   select(-region) |>
   relocate(geo, .before=everything())
 d_employment_nuts1 <- aggregate_nuts2_to_nuts1(d_employment_nuts2, geo, year)
-d_employment_all <- rbind(d_employment_nuts1, d_employment_nuts2)
+d_employment_all <- rbind(d_employment_nuts1, d_employment_nuts2) |>
+  mutate(
+    employment_accommodation_catering = 1000 * employment_accommodation_catering,
+    employment_other = 1000 * employment_other,
+    employment_total = 1000 * employment_total,
+    employment_total_greece = 1000 * employment_total_greece
+  )
 
 dbWriteTable(con_sqlite, "gr_insete_employment", d_employment_all, overwrite = TRUE)
 
