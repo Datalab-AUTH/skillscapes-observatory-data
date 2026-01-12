@@ -158,7 +158,8 @@ d_employment_all <- rbind(d_employment_nuts1, d_employment_nuts2) |>
     employment_accommodation_catering = 1000 * employment_accommodation_catering,
     employment_other = 1000 * employment_other,
     employment_total = 1000 * employment_total,
-    employment_total_greece = 1000 * employment_total_greece
+    employment_total_greece = 1000 * employment_total_greece,
+    year = as.integer(year)
   )
 
 dbWriteTable(con_sqlite, "gr_insete_employment", d_employment_all, overwrite = TRUE)
@@ -170,7 +171,8 @@ d_key_figures_nuts2 <- read_csv("INSETE/INSETE_key_figures.csv") |>
   select(-region) |>
   relocate(geo, .before=everything())
 d_key_figures_nuts1 <- aggregate_nuts2_to_nuts1(d_key_figures_nuts2, geo, year)
-d_key_figures_all <- rbind(d_key_figures_nuts1, d_key_figures_nuts2)
+d_key_figures_all <- rbind(d_key_figures_nuts1, d_key_figures_nuts2) |>
+  mutate(year = as.integer(year))
 
 dbWriteTable(con_sqlite, "gr_insete_key_figures", d_key_figures_all, overwrite = TRUE)
 
@@ -215,7 +217,8 @@ d_hotels_all <- d_hotels_with_EL42 |>
     hotels_total_arrivals_per_person = ifelse(is.infinite(hotels_total_arrivals_per_person), NA, hotels_total_arrivals_per_person), # there are zeros in the population data
     hotels_total_arrivals_per_km2 = hotels_total_arrivals / land_area
   ) |>
-  select(-population, -land_area)
+  select(-population, -land_area) |>
+  mutate(year = as.integer(year))
 
 dbWriteTable(con_sqlite, "gr_insete_hotels", d_hotels_all, overwrite = TRUE)
 
@@ -255,7 +258,8 @@ d_short_stay_all <- d_short_stay |>
     short_stay_total_arrivals_per_person = ifelse(is.infinite(short_stay_total_arrivals_per_person), NA, short_stay_total_arrivals_per_person), # there are zeros in the population data
     short_stay_total_arrivals_per_km2 = short_stay_total_arrivals / land_area
   ) |>
-  select(-population, -land_area)
+  select(-population, -land_area) |>
+  mutate(year = as.integer(year))
 
 dbWriteTable(con_sqlite, "gr_insete_short_stay", d_short_stay_all, overwrite = TRUE)
 
@@ -284,7 +288,8 @@ d_hotel_capacity_all <- d_hotel_capacity |>
     guest_beds_per_person = ifelse(is.infinite(guest_beds_per_person), NA, guest_beds_per_person), # there are zeros in the population data
     guest_beds_per_km2 = guest_beds / land_area
   ) |>
-  select(-population, -land_area)
+  select(-population, -land_area) |>
+  mutate(year = as.integer(year))
 
 dbWriteTable(con_sqlite, "gr_insete_hotel_capacity", d_hotel_capacity_all, overwrite = TRUE)
 
