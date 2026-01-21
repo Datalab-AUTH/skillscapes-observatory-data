@@ -155,7 +155,7 @@ d <- rbind(d_elstat_NUTS1, d_elstat_NUTS2, d_elstat_NUTS3) |>
   arrange(NUTS_level, NUTS_label, year) |>
   select(-NUTS_label, -NUTS_level) |>
   relocate(geo, .before=year) |>
-  filter(geo != "ΑΤΤΙΚΗΣ*") |> # There are not NUTS3 data for Attiki
+  filter(geo != "ΑΤΤΙΚΗΣ*") |> # There are no NUTS3 data for Attiki
   rename(
     "turnover_catering" = "Turnover_Catering",
     "turnover_accommodation" = "Turnover_Accomodation"
