@@ -207,6 +207,15 @@ d_hotels_all <- d_hotels_with_EL42 |>
   left_join(d_gr_population, by=c("geo", "year")) |>
   left_join(d_gr_land_area, by="geo") |>
   mutate(
+    hotels_foreign_overnights_per_person = hotels_foreign_overnights / population,
+    hotels_foreign_overnights_per_person = ifelse(is.infinite(hotels_foreign_overnights_per_person), NA, hotels_foreign_overnights_per_person), # there are zeros in the population data
+    hotels_foreign_overnights_per_km2 = hotels_foreign_overnights / land_area,
+    hotels_domestic_overnights_per_person = hotels_domestic_overnights / population,
+    hotels_domestic_overnights_per_person = ifelse(is.infinite(hotels_domestic_overnights_per_person), NA, hotels_domestic_overnights_per_person), # there are zeros in the population data
+    hotels_domestic_overnights_per_km2 = hotels_domestic_overnights / land_area,
+    hotels_total_overnights_per_person = hotels_total_overnights / population,
+    hotels_total_overnights_per_person = ifelse(is.infinite(hotels_total_overnights_per_person), NA, hotels_total_overnights_per_person), # there are zeros in the population data
+    hotels_total_overnights_per_km2 = hotels_total_overnights / land_area,
     hotels_foreign_arrivals_per_person = hotels_foreign_arrivals / population,
     hotels_foreign_arrivals_per_person = ifelse(is.infinite(hotels_foreign_arrivals_per_person), NA, hotels_foreign_arrivals_per_person), # there are zeros in the population data
     hotels_foreign_arrivals_per_km2 = hotels_foreign_arrivals / land_area,
@@ -240,14 +249,29 @@ d_short_stay_remaining_nuts3 <- aggregate_regional_to_nuts3(
   d_short_stay |> filter(!str_starts(geo, "EL421")) |> # we already have data for DODECANESE
     filter(!str_starts(geo, "EL422")),                 # and CYCLADES
   geo, year)
+# but we don't have data for South Aegean (EL42)...
+d_short_stay_EL421_EL422 <- d_short_stay |>
+  filter(geo == "EL421" | geo == "EL422")
+d_short_stay_EL42 <- aggregate_nuts3_to_nuts2(d_short_stay_EL421_EL422, geo, year)
+d_short_stay_with_EL42 <- d_short_stay |>
+  rbind(d_short_stay_EL42)
 d_short_stay_nuts1 <- aggregate_nuts2_to_nuts1(d_short_stay, geo, year)
-d_short_stay_all <- d_short_stay |>
+d_short_stay_all <- d_short_stay_with_EL42 |>
   rbind(d_short_stay_remaining_nuts3) |>
   rbind(d_short_stay_nuts1) |>
   relocate(geo, .before=everything()) |>
   left_join(d_gr_population, by=c("geo", "year")) |>
   left_join(d_gr_land_area, by="geo") |>
   mutate(
+    short_stay_foreign_overnights_per_person = short_stay_foreign_overnights / population,
+    short_stay_foreign_overnights_per_person = ifelse(is.infinite(short_stay_foreign_overnights_per_person), NA, short_stay_foreign_overnights_per_person), # there are zeros in the population data
+    short_stay_foreign_overnights_per_km2 = short_stay_foreign_overnights / land_area,
+    short_stay_domestic_overnights_per_person = short_stay_domestic_overnights / population,
+    short_stay_domestic_overnights_per_person = ifelse(is.infinite(short_stay_domestic_overnights_per_person), NA, short_stay_domestic_overnights_per_person), # there are zeros in the population data
+    short_stay_domestic_overnights_per_km2 = short_stay_domestic_overnights / land_area,
+    short_stay_total_overnights_per_person = short_stay_total_overnights / population,
+    short_stay_total_overnights_per_person = ifelse(is.infinite(short_stay_total_overnights_per_person), NA, short_stay_total_overnights_per_person), # there are zeros in the population data
+    short_stay_total_overnights_per_km2 = short_stay_total_overnights / land_area,
     short_stay_foreign_arrivals_per_person = short_stay_foreign_arrivals / population,
     short_stay_foreign_arrivals_per_person = ifelse(is.infinite(short_stay_foreign_arrivals_per_person), NA, short_stay_foreign_arrivals_per_person), # there are zeros in the population data
     short_stay_foreign_arrivals_per_km2 = short_stay_foreign_arrivals / land_area,
