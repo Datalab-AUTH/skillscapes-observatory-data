@@ -20,6 +20,7 @@ source('gen_nuts.R')
 
 source('eu_economy_gdp.R')
 source('eu_economy_gfcf.R')
+source('eu_economy_gfcf_per_asset.R')
 source('eu_economy_gva.R')
 
 source('eu_labour_employ_labour_force.R')
