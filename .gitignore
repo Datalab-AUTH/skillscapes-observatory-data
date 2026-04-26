@@ -1,4 +1,5 @@
 skillscapes.sqlite
+skillscapes_*.sqlite
 data_prep/env
 data_prep/INSETE/*.csv
 data_prep/ELSTAT/ELSTAT_SBR03.csv
