@@ -1,5 +1,11 @@
 #!/bin/bash
 
+set -e
+
+if [ -f skillscapes.sqlite ]; then
+	mv skillscapes.sqlite skillscapes_$(date +%Y%m%d%S).sqlite
+fi
+
 cd data_prep
 
 if [ -f env ]; then
@@ -44,3 +50,6 @@ docker run --rm -ti -u `id -u`:`id -g` -v `pwd`:/app -v /tmp:/tmp \
 	datalabauth/skillscapes-r \
 	Rscript all.R
 
+mv skillscapes.sqlite ../
+
+set +e
