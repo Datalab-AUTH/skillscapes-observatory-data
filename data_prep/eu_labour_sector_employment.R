@@ -22,21 +22,11 @@ if (!exists('con_postgres')) {
   )
 }
 
-if (!exists('d_eu_labour_total_employment')) {
-  source('eu_labour_employ_total_employment.R')
-}
 if (!exists('d_gen_nuts')) {
   source('gen_nuts.R')
 }
-
-d_country_total_employment <- d_eu_labour_total_employment |>
-  left_join(d_gen_nuts, by="geo") |>
-  filter(nuts_level == 0) |>
-  rename(total_employment_country = total_employment) |>
-  mutate(country_code = geo) |>
-  select(country_code, year, total_employment_country)
   
-d_eu_labour_sector_employment <- dbGetQuery(con_postgres, "SELECT * FROM rslb_user.b41_empl_data_abs") |>
+d_sector_employment_from_aegean <- dbGetQuery(con_postgres, "SELECT * FROM rslb_user.b41_empl_data_abs") |>
   filter(period == "A") |>
   select(-period, -neets, -employment, -unemployment, -inactive) |>
   rename(
@@ -53,10 +43,8 @@ d_eu_labour_sector_employment <- dbGetQuery(con_postgres, "SELECT * FROM rslb_us
     sector_i = 1000 * sector_i,
     sector_jklmnu = 1000 * sector_jklmnu,
     sector_opq = 1000 * sector_opq,
-    sector_rst = 1000 * sector_rst
-  ) |>
-  left_join(d_eu_labour_total_employment, by=c("geo", "year")) |>
-  mutate(
+    sector_rst = 1000 * sector_rst,
+    total_employment = rowSums(across(c(sector_a, sector_bde, sector_c, sector_f, sector_g, sector_h, sector_i, sector_jklmnu, sector_opq, sector_rst)), na.rm=T),
     sector_a_pct = 100 * sector_a / total_employment,
     sector_bde_pct = 100 * sector_bde / total_employment,
     sector_c_pct = 100 * sector_c / total_employment,
@@ -70,7 +58,7 @@ d_eu_labour_sector_employment <- dbGetQuery(con_postgres, "SELECT * FROM rslb_us
   ) |>
   mutate(country_code = str_sub(geo, 1, 2))
 
-d_country_sector_employment <- d_eu_labour_sector_employment |>
+d_country_sector_employment <- d_sector_employment_from_aegean |>
   left_join(d_gen_nuts, by="geo") |>
   filter(nuts_level == 0) |>
   rename(
@@ -84,12 +72,12 @@ d_country_sector_employment <- d_eu_labour_sector_employment |>
     sector_i_country = sector_i,
     sector_jklmnu_country = sector_jklmnu,
     sector_opq_country = sector_opq,
-    sector_rst_country = sector_rst
+    sector_rst_country = sector_rst,
+    total_employment_country = total_employment
   ) |>
   select(country_code, year, ends_with("_country"))
 
-d_eu_labour_sector_employment <- d_eu_labour_sector_employment |>
-  left_join(d_country_total_employment, by=c("country_code", "year")) |>
+d_eu_labour_sector_employment <- d_sector_employment_from_aegean |>
   left_join(d_country_sector_employment, by=c("country_code", "year")) |>
   mutate(
     sector_a_lq = (sector_a / total_employment) / (sector_a_country / total_employment_country),
@@ -127,26 +115,26 @@ d_eu_labour_sector_employment <- d_eu_labour_sector_employment |>
     sector_rst_country_prev_year = lag(sector_rst_country),
     total_employment_prev_year = lag(total_employment),
     total_employment_country_prev_year = lag(total_employment_country),
-    NS_sector_a = sector_a_prev_year * (total_employment - total_employment_prev_year) / total_employment_prev_year,
-    NS_sector_bde = sector_bde_prev_year * (total_employment - total_employment_prev_year) / total_employment_prev_year,
-    NS_sector_c = sector_c_prev_year * (total_employment - total_employment_prev_year) / total_employment_prev_year,
-    NS_sector_f = sector_f_prev_year * (total_employment - total_employment_prev_year) / total_employment_prev_year,
-    NS_sector_g = sector_g_prev_year * (total_employment - total_employment_prev_year) / total_employment_prev_year,
-    NS_sector_h = sector_h_prev_year * (total_employment - total_employment_prev_year) / total_employment_prev_year,
-    NS_sector_i = sector_i_prev_year * (total_employment - total_employment_prev_year) / total_employment_prev_year,
-    NS_sector_jklmnu = sector_jklmnu_prev_year * (total_employment - total_employment_prev_year) / total_employment_prev_year,
-    NS_sector_opq = sector_opq_prev_year * (total_employment - total_employment_prev_year) / total_employment_prev_year,
-    NS_sector_rst = sector_rst_prev_year * (total_employment - total_employment_prev_year) / total_employment_prev_year,
-    IM_sector_a = sector_a_prev_year * ((sector_a_country - sector_a_country_prev_year) / sector_a_country_prev_year - (total_employment - total_employment_prev_year) / total_employment_prev_year),
-    IM_sector_bde = sector_bde_prev_year * ((sector_bde_country - sector_bde_country_prev_year) / sector_bde_country_prev_year - (total_employment - total_employment_prev_year) / total_employment_prev_year),
-    IM_sector_c = sector_c_prev_year * ((sector_c_country - sector_c_country_prev_year) / sector_c_country_prev_year - (total_employment - total_employment_prev_year) / total_employment_prev_year),
-    IM_sector_f = sector_f_prev_year * ((sector_f_country - sector_f_country_prev_year) / sector_f_country_prev_year - (total_employment - total_employment_prev_year) / total_employment_prev_year),
-    IM_sector_g = sector_g_prev_year * ((sector_g_country - sector_g_country_prev_year) / sector_g_country_prev_year - (total_employment - total_employment_prev_year) / total_employment_prev_year),
-    IM_sector_h = sector_h_prev_year * ((sector_h_country - sector_h_country_prev_year) / sector_h_country_prev_year - (total_employment - total_employment_prev_year) / total_employment_prev_year),
-    IM_sector_i = sector_i_prev_year * ((sector_i_country - sector_i_country_prev_year) / sector_i_country_prev_year - (total_employment - total_employment_prev_year) / total_employment_prev_year),
-    IM_sector_jklmnu = sector_jklmnu_prev_year * ((sector_jklmnu_country - sector_jklmnu_country_prev_year) / sector_jklmnu_country_prev_year - (total_employment - total_employment_prev_year) / total_employment_prev_year),
-    IM_sector_opq = sector_opq_prev_year * ((sector_opq_country - sector_opq_country_prev_year) / sector_opq_country_prev_year - (total_employment - total_employment_prev_year) / total_employment_prev_year),
-    IM_sector_rst = sector_rst_prev_year * ((sector_rst_country - sector_rst_country_prev_year) / sector_rst_country_prev_year - (total_employment - total_employment_prev_year) / total_employment_prev_year),
+    NS_sector_a = sector_a_prev_year * (total_employment_country - total_employment_country_prev_year) / total_employment_country_prev_year,
+    NS_sector_bde = sector_bde_prev_year * (total_employment_country - total_employment_country_prev_year) / total_employment_country_prev_year,
+    NS_sector_c = sector_c_prev_year * (total_employment_country - total_employment_country_prev_year) / total_employment_country_prev_year,
+    NS_sector_f = sector_f_prev_year * (total_employment_country - total_employment_country_prev_year) / total_employment_country_prev_year,
+    NS_sector_g = sector_g_prev_year * (total_employment_country - total_employment_country_prev_year) / total_employment_country_prev_year,
+    NS_sector_h = sector_h_prev_year * (total_employment_country - total_employment_country_prev_year) / total_employment_country_prev_year,
+    NS_sector_i = sector_i_prev_year * (total_employment_country - total_employment_country_prev_year) / total_employment_country_prev_year,
+    NS_sector_jklmnu = sector_jklmnu_prev_year * (total_employment_country - total_employment_country_prev_year) / total_employment_country_prev_year,
+    NS_sector_opq = sector_opq_prev_year * (total_employment_country - total_employment_country_prev_year) / total_employment_country_prev_year,
+    NS_sector_rst = sector_rst_prev_year * (total_employment_country - total_employment_country_prev_year) / total_employment_country_prev_year,
+    IM_sector_a = sector_a_prev_year * ((sector_a_country - sector_a_country_prev_year) / sector_a_country_prev_year - (total_employment_country - total_employment_country_prev_year) / total_employment_country_prev_year),
+    IM_sector_bde = sector_bde_prev_year * ((sector_bde_country - sector_bde_country_prev_year) / sector_bde_country_prev_year - (total_employment_country - total_employment_country_prev_year) / total_employment_country_prev_year),
+    IM_sector_c = sector_c_prev_year * ((sector_c_country - sector_c_country_prev_year) / sector_c_country_prev_year - (total_employment_country - total_employment_country_prev_year) / total_employment_country_prev_year),
+    IM_sector_f = sector_f_prev_year * ((sector_f_country - sector_f_country_prev_year) / sector_f_country_prev_year - (total_employment_country - total_employment_country_prev_year) / total_employment_country_prev_year),
+    IM_sector_g = sector_g_prev_year * ((sector_g_country - sector_g_country_prev_year) / sector_g_country_prev_year - (total_employment_country - total_employment_country_prev_year) / total_employment_country_prev_year),
+    IM_sector_h = sector_h_prev_year * ((sector_h_country - sector_h_country_prev_year) / sector_h_country_prev_year - (total_employment_country - total_employment_country_prev_year) / total_employment_country_prev_year),
+    IM_sector_i = sector_i_prev_year * ((sector_i_country - sector_i_country_prev_year) / sector_i_country_prev_year - (total_employment_country - total_employment_country_prev_year) / total_employment_country_prev_year),
+    IM_sector_jklmnu = sector_jklmnu_prev_year * ((sector_jklmnu_country - sector_jklmnu_country_prev_year) / sector_jklmnu_country_prev_year - (total_employment_country - total_employment_country_prev_year) / total_employment_country_prev_year),
+    IM_sector_opq = sector_opq_prev_year * ((sector_opq_country - sector_opq_country_prev_year) / sector_opq_country_prev_year - (total_employment_country - total_employment_country_prev_year) / total_employment_country_prev_year),
+    IM_sector_rst = sector_rst_prev_year * ((sector_rst_country - sector_rst_country_prev_year) / sector_rst_country_prev_year - (total_employment_country - total_employment_country_prev_year) / total_employment_country_prev_year),
     RS_sector_a = sector_a_prev_year * ((sector_a - sector_a_prev_year) / sector_a_prev_year - (sector_a_country - sector_a_country_prev_year) / sector_a_country_prev_year),
     RS_sector_bde = sector_bde_prev_year * ((sector_bde - sector_bde_prev_year) / sector_bde_prev_year - (sector_bde_country - sector_bde_country_prev_year) / sector_bde_country_prev_year),
     RS_sector_c = sector_c_prev_year * ((sector_c - sector_c_prev_year) / sector_c_prev_year - (sector_c_country - sector_c_country_prev_year) / sector_c_country_prev_year),
