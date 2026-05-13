@@ -9,7 +9,7 @@ def read_excel_long(excel_path):
     # --- CONFIG ---
     label_a_col = 0
     label_b_col = 1
-    year_cols = list(range(2, 8))  # C:H (2019–2024)
+    year_cols = list(range(2, 9))  # C:H (2019–2025)
     header_row = 3                 # Excel row 4
     data_start = 4                 # Excel row 5
     data_end = 70                  # Excel row 71
