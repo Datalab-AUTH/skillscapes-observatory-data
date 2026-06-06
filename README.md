@@ -9,7 +9,12 @@ SQLite database (`skillscapes.sqlite`) used by the Observatory.
 
 - A Linux system with Docker installed and running
 - The `datalabauth/skillscapes-python` and `datalabauth/skillscapes-r` Docker
-  images available locally
+  images available locally. Pull them from Docker Hub with:
+
+  ```bash
+  docker pull datalabauth/skillscapes-python
+  docker pull datalabauth/skillscapes-r
+  ```
 - Access to the Reslab PostgreSQL database at the University of the Aegean,
   with read permissions on the following tables:
   - `rslb_user.b41_empl_data_abs`
