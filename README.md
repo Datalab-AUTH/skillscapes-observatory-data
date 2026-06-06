@@ -8,13 +8,35 @@ SQLite database (`skillscapes.sqlite`) used by the Observatory.
 ## Prerequisites
 
 - A Linux system with Docker installed and running
-- The `datalabauth/skillscapes-python` and `datalabauth/skillscapes-r` Docker images available locally
+- The `datalabauth/skillscapes-python` and `datalabauth/skillscapes-r` Docker
+  images available locally
+- Access to the Reslab PostgreSQL database at the University of the Aegean,
+  with read permissions on the following tables:
+  - `rslb_user.b41_empl_data_abs`
+  - `rslb_user.b53_vfca`
+  - `rslb_user.b54_isco`
+  - `rslb_user.b63_neets_full`
 - Access to the microdata application at https://geo-api.aegean.gr/microdata-app/
 
 ## Before Running
 
-Three data sources require manual updates before running the pipeline. Update
-them in the following order.
+Four things must be in place before running the pipeline. Complete them in the
+following order.
+
+### 0. Reslab database credentials
+
+Several R scripts query the Reslab PostgreSQL database directly. Create the
+file `data_prep/env` (it is gitignored) with the connection details:
+
+```
+PGHOST=<host>
+PGPORT=<port>
+PGDATABASE=<database>
+PGUSER=<username>
+PGPASSWORD=<password>
+```
+
+This file is loaded automatically by the R scripts at runtime.
 
 ### 1. INSETE data
 
@@ -55,7 +77,7 @@ and years* section:
 
 ## Running the Pipeline
 
-Once all three data sources above are updated, run:
+Once all of the above is in place, run:
 
 ```bash
 ./run_all.sh
