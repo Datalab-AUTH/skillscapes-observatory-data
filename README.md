@@ -15,6 +15,9 @@ SQLite database (`skillscapes.sqlite`) used by the Observatory.
   docker pull datalabauth/skillscapes-python
   docker pull datalabauth/skillscapes-r
   ```
+
+  Alternatively, you can build these docker images locally, by using the
+  respective Dockerfiles in the `docker` directory. 
 - Access to the Reslab PostgreSQL database at the University of the Aegean,
   with read permissions on the following tables:
   - `rslb_user.b41_empl_data_abs`
