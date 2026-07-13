@@ -120,24 +120,28 @@ pd.set_option('display.max_columns', None)
 # Aegean...
 sheet_name = "STR capacity"
 
-df_attica = extract_STR_data("Attica_Region_ENG_26.xlsx", sheet_name)
-df_central_greece = extract_STR_data("Central_Greece_Region_ENG_26.xlsx", sheet_name)
-df_central_macedonia = extract_STR_data("Central_Macedonia_Region_ENG_26.xlsx", sheet_name)
-df_crete = extract_STR_data("Crete_Region_ENG_26.xlsx", sheet_name)
-df_eastern_macedonia = extract_STR_data("Eastern_Macedonia-Thrace_Region_ENG_26.xlsx", sheet_name)
-df_epirus = extract_STR_data("Epirus_Region_ENG_26.xlsx", sheet_name)
-df_ionian_islands = extract_STR_data("Ionian_Islands_Region_ENG_26.xlsx", sheet_name)
-df_north_aegean = extract_STR_data("North_Aegean_Region_ENG_26-1.xlsx", sheet_name)
-df_peloponnese = extract_STR_data("Peloponnese_Region_ENG_26.xlsx", sheet_name)
-df_thessaly = extract_STR_data("Thessaly_Region_ENG_26.xlsx", sheet_name)
-df_western_greece = extract_STR_data("Western_Greece_Region_ENG_26.xlsx", sheet_name)
-df_western_macedonia = extract_STR_data("Western_Macedonia_Region_ENG_26.xlsx", sheet_name)
-# see... South Aegean has different sheets for Cyclades and
-# Dodecanese...
-df_south_aegean_cyclades = extract_STR_data("South_Aegean_Region_ENG_.xlsx",
-                                     "STR capacity Cyclades")
-df_south_aegean_dodecanese = extract_STR_data("South_Aegean_Region_ENG_.xlsx",
-                                     "STR capacity Dodecanese")
+df_attica = extract_STR_data("Attica_Region_ENG-7.xlsx", sheet_name)
+df_central_greece = extract_STR_data("Central_Greece_Region_ENG-4.xlsx", sheet_name)
+df_central_macedonia = extract_STR_data("Central_Macedonia_Region_ENG-5.xlsx", sheet_name)
+df_crete = extract_STR_data("Crete_Region_ENG-3.xlsx", sheet_name)
+df_eastern_macedonia = extract_STR_data("Eastern_Macedonia-Thrace_Region_ENG-5.xlsx", sheet_name)
+df_epirus = extract_STR_data("Epirus_Region_ENG-4.xlsx", sheet_name)
+df_ionian_islands = extract_STR_data("Ionian_Islands_Region_ENG-4.xlsx", sheet_name)
+df_north_aegean = extract_STR_data("North_Aegean_Region_ENG-5.xlsx", sheet_name)
+df_peloponnese = extract_STR_data("Peloponnese_Region_ENG-4.xlsx", sheet_name)
+df_thessaly = extract_STR_data("Thessaly_Region_ENG-5.xlsx", sheet_name)
+df_western_greece = extract_STR_data("Western_Greece_Region_ENG-4.xlsx", sheet_name)
+df_western_macedonia = extract_STR_data("Western_Macedonia_Region_ENG-6.xlsx", sheet_name)
+
+# South Aegean has different sheets for Cyclades and Dodecanese
+df_south_aegean_cyclades = extract_STR_data(
+    "South_Aegean_Region_ENG_-1.xlsx",
+    "STR capacity Cyclades"
+)
+df_south_aegean_dodecanese = extract_STR_data(
+    "South_Aegean_Region_ENG_-1.xlsx",
+    "STR capacity Dodecanese"
+)
 
 df_all = pd.concat([
   df_attica,
